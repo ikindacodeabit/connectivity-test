@@ -1,0 +1,31 @@
+name: ${CHATTER_ROLE:-talker}
+
+services:
+  ros2_dev:
+    build: .
+    network_mode: service:husarnet
+    depends_on:
+      husarnet: {condition: service_healthy}
+    environment:
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - ROS_DISCOVERY_SERVER=ds-host:11811
+    volumes:
+      - ./src:/ros2_ws/src
+    working_dir: /ros2_ws
+    command: /bin/bash -c "source install/setup.bash && ros2 run test_pkg ${CHATTER_ROLE:-talker}"
+
+
+  husarnet:
+    image: husarnet/husarnet:2.0.180
+    volumes:
+      - /var/lib/husarnet
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    environment:
+      - HOSTNAME=${CHATTER_ROLE:-talker}-host
+      - JOINCODE
+      - WAIT_HOSTNAMES=ds-host

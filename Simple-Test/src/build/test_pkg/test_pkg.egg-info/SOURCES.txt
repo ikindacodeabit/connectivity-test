@@ -1,0 +1,14 @@
+package.xml
+setup.cfg
+setup.py
+resource/test_pkg
+test_pkg/__init__.py
+test_pkg/listener.py
+test_pkg/talker.py
+test_pkg.egg-info/PKG-INFO
+test_pkg.egg-info/SOURCES.txt
+test_pkg.egg-info/dependency_links.txt
+test_pkg.egg-info/entry_points.txt
+test_pkg.egg-info/requires.txt
+test_pkg.egg-info/top_level.txt
+test_pkg.egg-info/zip-safe
