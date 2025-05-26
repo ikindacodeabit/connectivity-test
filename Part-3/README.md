@@ -1,5 +1,7 @@
 # Using `ROS_DISCOVERY_SERVER`
 
+#### Make sure to change the .env file with your join code.
+
 This demo illustrates how to use the `ROS_DISCOVERY_SERVER` environment variable and the `fastdds discovery` CLI with Husarnet. Note that this is a minimal demo and does not require the `husarnet/ros:$ROS_DISTRO-ros-core` image - `ros:$ROS_DISTRO-ros-core` is enough.
 
 For more information on the Fast DDS Discovery Server, refer to the [official documentation](https://docs.ros.org/en/jazzy/Tutorials/Advanced/Discovery-Server/Discovery-Server.html)

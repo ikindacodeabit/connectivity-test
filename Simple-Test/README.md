@@ -1,5 +1,7 @@
 ## Simple Test
 
+#### Make sure to change the .env file with your join code.
+
 This simple test is to show how you can run your own code.
 Here we accomplish the following :
 - Mounting custom code in docker, with this we can work on our code separately and then easily access it in the docker container.
