@@ -24,5 +24,4 @@ services:
     environment:
       - HOSTNAME=${CHATTER_ROLE:-talker}-host
       - JOINCODE
-      - HUSARNET_DEBUG=1
       - WAIT_HOSTNAMES=ds-host

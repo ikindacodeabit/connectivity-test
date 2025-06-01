@@ -4,11 +4,16 @@ services:
   ros:
     image: osrf/ros:jazzy-desktop-full
     network_mode: service:husarnet
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    privileged: true
     depends_on: 
       husarnet: { condition: service_healthy } # husarnet service is healthy if all hosts listed in WAIT_HOSTNAMES are reachable
     # volumes:
     #   - ./superclient.xml:/superclient.xml
     environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
       - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
       # - FASTRTPS_DEFAULT_PROFILES_FILE=/superclient.xml
       - ROS_SUPER_CLIENT=TRUE
