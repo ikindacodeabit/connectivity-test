@@ -2,7 +2,7 @@ name: superclient
 
 services:
   ros:
-    image: ros:jazzy-ros-core
+    image: osrf/ros:jazzy-desktop-full
     network_mode: service:husarnet
     depends_on: 
       husarnet: { condition: service_healthy } # husarnet service is healthy if all hosts listed in WAIT_HOSTNAMES are reachable

@@ -2,7 +2,7 @@ name: discovery-server
 
 services:
   ds:
-    image: ros:jazzy-ros-core
+    image: osrf/ros:jazzy-desktop-full
     network_mode: service:husarnet
     command: fastdds discovery -i 0 -l husarnet-local -p 11811
 
