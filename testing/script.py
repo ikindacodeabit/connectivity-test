@@ -1,98 +1,87 @@
-#!/usr/bin/env python3
-
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import TwistStamped
+from geometry_msgs.msg import Twist, TwistStamped
 import sys
-import termios
 import tty
-import select
-from datetime import datetime
+import termios
+import time
 
-# Key mappings
-move_bindings = {
-    'w': (1.0, 0.0, 0.0),
-    's': (-1.0, 0.0, 0.0),
-    'a': (0.0, 1.0, 0.0),
-    'd': (0.0, -1.0, 0.0),
-    'q': (0.0, 0.0, 1.0),
-    'e': (0.0, 0.0, -1.0)
-}
-
-speed_bindings = {
-    't': 1.1,
-    'g': 0.9
-}
 
 def get_key():
+    """Read single keypress from stdin."""
     tty.setraw(sys.stdin.fileno())
-    rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
-    key = sys.stdin.read(1) if rlist else ''
+    key = sys.stdin.read(1)
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
 
-class TeleopTwistStamped(Node):
-    def __init__(self):
-        super().__init__('teleop_twist_stamped')
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
-        self.linear_speed = 0.5
-        self.angular_speed = 1.0
-        self.timer = self.create_timer(0.1, self.publish_zero_twist)
-        self.last_key_time = self.get_clock().now()
+class TeleopTwistNode(Node):
+    def __init__(self, use_stamped: bool):
+        super().__init__('teleop_twist_node')
+        self.use_stamped = use_stamped
 
-        self.get_logger().info("Use keys: w/s/a/d/q/e to move. t/g to adjust speed. Ctrl+C to exit.")
+        if self.use_stamped:
+            self.publisher = self.create_publisher(TwistStamped, 'cmd_vel_stamped', 10)
+        else:
+            self.publisher = self.create_publisher(Twist, 'cmd_vel', 10)
 
-    def publish_twist(self, linear, angular):
-        twist_stamped = TwistStamped()
-        twist_stamped.header.stamp = self.get_clock().now().to_msg()
-        twist_stamped.header.frame_id = 'base_link'
-        twist_stamped.twist.linear.x = linear[0] * self.linear_speed
-        twist_stamped.twist.linear.y = linear[1] * self.linear_speed
-        twist_stamped.twist.linear.z = linear[2] * self.linear_speed
-        twist_stamped.twist.angular.z = angular[2] * self.angular_speed
+        self.timer = self.create_timer(0.1, self.timer_callback)
+        self.current_twist = Twist()
 
-        self.publisher_.publish(twist_stamped)
-        self.last_key_time = self.get_clock().now()
+    def timer_callback(self):
+        if self.use_stamped:
+            msg = TwistStamped()
+            msg.header.stamp = self.get_clock().now().to_msg()
+            msg.twist = self.current_twist
+            self.publisher.publish(msg)
+        else:
+            self.publisher.publish(self.current_twist)
 
-    def publish_zero_twist(self):
-        # Stop publishing if no key press in last 0.5 seconds
-        if (self.get_clock().now() - self.last_key_time).nanoseconds > 5e8:
-            twist_stamped = TwistStamped()
-            twist_stamped.header.stamp = self.get_clock().now().to_msg()
-            twist_stamped.header.frame_id = 'base_link'
-            self.publisher_.publish(twist_stamped)
+    def update_twist_from_key(self, key):
+        linear = 0.5
+        angular = 0.5
+
+        if key == 'w':
+            self.current_twist.linear.x = linear
+            self.current_twist.angular.z = 0.0
+        elif key == 's':
+            self.current_twist.linear.x = -linear
+            self.current_twist.angular.z = 0.0
+        elif key == 'a':
+            self.current_twist.linear.x = 0.0
+            self.current_twist.angular.z = angular
+        elif key == 'd':
+            self.current_twist.linear.x = 0.0
+            self.current_twist.angular.z = -angular
+        elif key == ' ':
+            self.current_twist = Twist()
+        elif key == 'q':
+            rclpy.shutdown()
 
 
 def main(args=None):
     global settings
     settings = termios.tcgetattr(sys.stdin)
+
+    print("Select message type to publish:")
+    print("1. geometry_msgs/msg/Twist")
+    print("2. geometry_msgs/msg/TwistStamped")
+    choice = input("Enter 1 or 2: ").strip()
+
+    use_stamped = choice == '2'
+
     rclpy.init(args=args)
-    node = TeleopTwistStamped()
+    node = TeleopTwistNode(use_stamped)
 
     try:
+        print("Use keys: W/A/S/D to move, SPACE to stop, Q to quit.")
         while rclpy.ok():
             key = get_key()
-            if key in move_bindings:
-                linear = move_bindings[key]
-                angular = (0.0, 0.0, linear[2])
-                node.publish_twist(linear, angular)
-            elif key in speed_bindings:
-                node.linear_speed *= speed_bindings[key]
-                node.angular_speed *= speed_bindings[key]
-                node.get_logger().info(f"Speed: linear={node.linear_speed:.2f}, angular={node.angular_speed:.2f}")
-            elif key == '\x03':  # Ctrl+C
-                break
-
-            rclpy.spin_once(node, timeout_sec=0.01)
-
+            node.update_twist_from_key(key)
+            rclpy.spin_once(node, timeout_sec=0.1)
     except Exception as e:
-        node.get_logger().error(f"Exception: {e}")
+        print(f"Error: {e}")
     finally:
-        twist_stamped = TwistStamped()
-        twist_stamped.header.stamp = node.get_clock().now().to_msg()
-        node.publisher_.publish(twist_stamped)
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
         node.destroy_node()
         rclpy.shutdown()
 
