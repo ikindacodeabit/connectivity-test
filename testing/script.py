@@ -35,7 +35,7 @@ def get_key():
 class TeleopTwistStamped(Node):
     def __init__(self):
         super().__init__('teleop_twist_stamped')
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel_stamped', 10)
+        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel', 10)
         self.linear_speed = 0.5
         self.angular_speed = 1.0
         self.timer = self.create_timer(0.1, self.publish_zero_twist)
