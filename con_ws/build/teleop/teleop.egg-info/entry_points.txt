@@ -1,0 +1,2 @@
+[console_scripts]
+teleop = teleop.twist_stamped:main

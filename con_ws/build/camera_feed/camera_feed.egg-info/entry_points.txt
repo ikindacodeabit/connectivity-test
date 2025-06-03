@@ -1,0 +1,3 @@
+[console_scripts]
+image_node = camera_feed.image_node:main
+show_feed = camera_feed.show_feed:main

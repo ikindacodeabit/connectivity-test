@@ -1,0 +1,18 @@
+[1.128s] Invoking command in '/home/tejas/con_ws/build/camera_feed': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/camera_feed/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/camera_feed/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/camera_feed/build --no-deps symlink_data
+[1.488s] running develop
+[1.690s] running egg_info
+[1.709s] writing camera_feed.egg-info/PKG-INFO
+[1.710s] writing dependency_links to camera_feed.egg-info/dependency_links.txt
+[1.711s] writing entry points to camera_feed.egg-info/entry_points.txt
+[1.711s] writing requirements to camera_feed.egg-info/requires.txt
+[1.711s] writing top-level names to camera_feed.egg-info/top_level.txt
+[1.751s] reading manifest file 'camera_feed.egg-info/SOURCES.txt'
+[1.751s] writing manifest file 'camera_feed.egg-info/SOURCES.txt'
+[1.772s] running build_ext
+[1.773s] Creating /home/tejas/con_ws/install/camera_feed/lib/python3.12/site-packages/camera-feed.egg-link (link to .)
+[1.773s] Installing image_node script to /home/tejas/con_ws/install/camera_feed/lib/camera_feed
+[1.774s] Installing show_feed script to /home/tejas/con_ws/install/camera_feed/lib/camera_feed
+[1.774s] 
+[1.774s] Installed /home/tejas/con_ws/build/camera_feed
+[1.774s] running symlink_data
+[1.811s] Invoked command in '/home/tejas/con_ws/build/camera_feed' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/camera_feed/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/camera_feed/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/camera_feed/build --no-deps symlink_data

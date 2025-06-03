@@ -1,0 +1,25 @@
+running develop
+running egg_info
+creating camera_feed.egg-info
+writing camera_feed.egg-info/PKG-INFO
+writing dependency_links to camera_feed.egg-info/dependency_links.txt
+writing entry points to camera_feed.egg-info/entry_points.txt
+writing requirements to camera_feed.egg-info/requires.txt
+writing top-level names to camera_feed.egg-info/top_level.txt
+writing manifest file 'camera_feed.egg-info/SOURCES.txt'
+reading manifest file 'camera_feed.egg-info/SOURCES.txt'
+writing manifest file 'camera_feed.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/tejas/con_ws/install/camera_feed/lib/python3.12/site-packages/camera-feed.egg-link (link to .)
+Installing image_node script to /home/tejas/con_ws/install/camera_feed/lib/camera_feed
+Installing show_feed script to /home/tejas/con_ws/install/camera_feed/lib/camera_feed
+
+Installed /home/tejas/con_ws/build/camera_feed
+running symlink_data
+creating /home/tejas/con_ws/install/camera_feed/share/ament_index
+creating /home/tejas/con_ws/install/camera_feed/share/ament_index/resource_index
+creating /home/tejas/con_ws/install/camera_feed/share/ament_index/resource_index/packages
+symbolically linking /home/tejas/con_ws/build/camera_feed/resource/camera_feed -> /home/tejas/con_ws/install/camera_feed/share/ament_index/resource_index/packages
+symbolically linking /home/tejas/con_ws/build/camera_feed/package.xml -> /home/tejas/con_ws/install/camera_feed/share/camera_feed
+creating /home/tejas/con_ws/install/camera_feed/share/camera_feed/launch
+symbolically linking /home/tejas/con_ws/build/camera_feed/launch/camera_launch.py -> /home/tejas/con_ws/install/camera_feed/share/camera_feed/launch

@@ -1,0 +1,17 @@
+[1.522s] Invoking command in '/home/tejas/con_ws/build/teleop': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/teleop/build --no-deps symlink_data
+[2.051s] running develop
+[2.346s] running egg_info
+[2.371s] writing teleop.egg-info/PKG-INFO
+[2.371s] writing dependency_links to teleop.egg-info/dependency_links.txt
+[2.372s] writing entry points to teleop.egg-info/entry_points.txt
+[2.372s] writing requirements to teleop.egg-info/requires.txt
+[2.372s] writing top-level names to teleop.egg-info/top_level.txt
+[2.423s] reading manifest file 'teleop.egg-info/SOURCES.txt'
+[2.424s] writing manifest file 'teleop.egg-info/SOURCES.txt'
+[2.450s] running build_ext
+[2.450s] Creating /home/tejas/con_ws/install/teleop/lib/python3.12/site-packages/teleop.egg-link (link to .)
+[2.451s] Installing teleop script to /home/tejas/con_ws/install/teleop/lib/teleop
+[2.451s] 
+[2.451s] Installed /home/tejas/con_ws/build/teleop
+[2.451s] running symlink_data
+[2.511s] Invoked command in '/home/tejas/con_ws/build/teleop' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/teleop/build --no-deps symlink_data

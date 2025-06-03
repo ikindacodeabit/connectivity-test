@@ -1,0 +1,26 @@
+[1.123s] Invoking command in '/home/tejas/con_ws/build/teleop': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/teleop/build --no-deps symlink_data
+[1.481s] running develop
+[1.681s] running egg_info
+[1.681s] creating teleop.egg-info
+[1.701s] writing teleop.egg-info/PKG-INFO
+[1.702s] writing dependency_links to teleop.egg-info/dependency_links.txt
+[1.702s] writing entry points to teleop.egg-info/entry_points.txt
+[1.702s] writing requirements to teleop.egg-info/requires.txt
+[1.702s] writing top-level names to teleop.egg-info/top_level.txt
+[1.702s] writing manifest file 'teleop.egg-info/SOURCES.txt'
+[1.743s] reading manifest file 'teleop.egg-info/SOURCES.txt'
+[1.744s] writing manifest file 'teleop.egg-info/SOURCES.txt'
+[1.765s] running build_ext
+[1.765s] Creating /home/tejas/con_ws/install/teleop/lib/python3.12/site-packages/teleop.egg-link (link to .)
+[1.766s] Installing teleop script to /home/tejas/con_ws/install/teleop/lib/teleop
+[1.766s] 
+[1.766s] Installed /home/tejas/con_ws/build/teleop
+[1.766s] running symlink_data
+[1.766s] creating /home/tejas/con_ws/install/teleop/share/ament_index
+[1.766s] creating /home/tejas/con_ws/install/teleop/share/ament_index/resource_index
+[1.767s] creating /home/tejas/con_ws/install/teleop/share/ament_index/resource_index/packages
+[1.767s] symbolically linking /home/tejas/con_ws/build/teleop/resource/teleop -> /home/tejas/con_ws/install/teleop/share/ament_index/resource_index/packages
+[1.767s] symbolically linking /home/tejas/con_ws/build/teleop/package.xml -> /home/tejas/con_ws/install/teleop/share/teleop
+[1.767s] creating /home/tejas/con_ws/install/teleop/share/teleop/launch
+[1.767s] error: can't copy '/home/tejas/con_ws/build/teleop/launch/camera_launch.py': doesn't exist or not a regular file
+[1.815s] Invoked command in '/home/tejas/con_ws/build/teleop' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tejas/con_ws/build/teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tejas/con_ws/install/teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tejas/con_ws/build/teleop/build --no-deps symlink_data
